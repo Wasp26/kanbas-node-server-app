@@ -29,9 +29,6 @@ export default function AssignmentRoutes(app) {
 
   app.put("/api/courses/:cid/assignments/:aid", (req, res) => {
     const { cid, aid } = req.params;
-    console.log(cid);
-    console.log(aid);
-    console.log(JSON.stringify(req.body));
     const assignmentIndex = Database.assignments.findIndex(
       (assignment) => assignment.course === cid && assignment._id === aid
     );
