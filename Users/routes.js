@@ -70,6 +70,7 @@ export default function UserRoutes(app) {
       res.sendStatus(401);
       return;
     }
+    res.json(currentUser);
   };
 
   app.post("/api/users", createUser);
