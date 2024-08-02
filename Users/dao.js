@@ -2,6 +2,13 @@ import model from "./model.js";
 
 export const createUser = (user) => {
   delete user._id;
+  const date = new Date().toISOString().split("T")[0];
+  user = {
+    ...user,
+    loginId: Math.floor(Math.random() * 1000000000).toString(),
+    section: "S101",
+    lastActivity: date,
+  };
   return model.create(user);
 };
 
@@ -28,3 +35,9 @@ export const findUsersByPartialName = (partialName) => {
     $or: [{ firstName: { $regex: regex } }, { lastName: { $regex: regex } }],
   });
 };
+
+export const addCourseToUser = (userId, courseId) =>
+  model.updateOne({ _id: userId }, { $push: { courses: courseId } });
+
+export const getCourses = (userId) =>
+  model.findOne({ _id: userId }, { courses: 1, _id: 0 });
