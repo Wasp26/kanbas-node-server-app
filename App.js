@@ -9,6 +9,7 @@ import mongoose from "mongoose";
 import "dotenv/config";
 import UserRoutes from "./Users/routes.js";
 import session from "express-session";
+import QuizRoutes from "./Quizzes/routes.js";
 
 const app = express();
 app.use(
@@ -45,4 +46,5 @@ CourseRoutes(app);
 ModulesRoutes(app);
 AssignmentRoutes(app);
 UserRoutes(app);
+QuizRoutes(app);
 app.listen(process.env.PORT || 4000);
