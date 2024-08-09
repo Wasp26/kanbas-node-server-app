@@ -10,6 +10,7 @@ import "dotenv/config";
 import UserRoutes from "./Users/routes.js";
 import session from "express-session";
 import QuizRoutes from "./Quizzes/routes.js";
+import AttemptRoutes from "./Attempt/routes.js";
 
 const app = express();
 app.use(
@@ -47,5 +48,6 @@ ModulesRoutes(app);
 AssignmentRoutes(app);
 UserRoutes(app);
 QuizRoutes(app);
+AttemptRoutes(app);
 
 app.listen(process.env.PORT || 4000);
