@@ -38,6 +38,19 @@ export default function QuizRoutes(app) {
     res.json(quizzes);
   };
 
+  const findQuestionById = async (req, res) => {
+    const { id } = req.params; // Extract the ID from params
+    try {
+      const question = await dao.findQuestionById(id);
+      if (!question) {
+        return res.status(404).json({ message: 'Question not found' });
+      }
+      res.json(question);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
+
   app.post("/api/quizzes/:courseId", createQuiz);
   app.get("/api/quizzes/:courseId", findAllQuizzes);
   app.get("/api/quizzes/:courseId/:quizId", findQuizById);
@@ -47,4 +60,5 @@ export default function QuizRoutes(app) {
     "/api/quizzes/:courseId/search/:partialName",
     findQuizzesByPartialName
   );
+ app.get("/api/questions/:id", findQuestionById);
 }

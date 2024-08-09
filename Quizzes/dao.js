@@ -13,10 +13,18 @@ export const updateQuiz = (courseId, quizId, quiz) =>
 export const deleteQuiz = (courseId, quizId) =>
   model.deleteOne({ courseId, _id: quizId });
 
+
+export const findQuestionById = (id) => {
+  return model.findOne({ 'questions.id': id });
+};
+
+
 export const findQuizzesByPartialName = (courseId, partialName) => {
   const regex = new RegExp(partialName, "i"); // 'i' makes it case-insensitive
   return model.find({
     courseId,
     $or: [{ title: { $regex: regex } }],
   });
+
+  
 };

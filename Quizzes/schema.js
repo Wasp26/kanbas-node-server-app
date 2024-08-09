@@ -1,10 +1,11 @@
 import mongoose from "mongoose";
 
 const questionSchema = new mongoose.Schema({
+  title: String,
   id: String,
   type: String,
   points: Number,
-  text: String,
+  question: String,
   choices: [
     {
       id: Number,
@@ -21,7 +22,7 @@ const questionSchema = new mongoose.Schema({
   answer: Boolean
 }, 
 {
-  _id: false // Prevent Mongoose from creating a new _id for each question
+  _id: false
 });
 
 const quizSchema = new mongoose.Schema({
@@ -49,7 +50,7 @@ const quizSchema = new mongoose.Schema({
 }, 
 {
   collection: "quizzes",
-  timestamps: true // Optional: add createdAt and updatedAt fields
+  timestamps: true 
 });
 
 export default quizSchema;
