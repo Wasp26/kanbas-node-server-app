@@ -39,7 +39,7 @@ export default function QuizRoutes(app) {
   };
 
   const findQuestionById = async (req, res) => {
-    const { id } = req.params; // Extract the ID from params
+    const { id } = req.params; 
     try {
       const question = await dao.findQuestionById(id);
       if (!question) {
