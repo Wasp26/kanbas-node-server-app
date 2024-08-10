@@ -5,10 +5,11 @@ const attemptSchema = new mongoose.Schema(
     courseId: String,
     quizId: String,
     attemptNo: Number,
+    score: Number,
     answers: [
       {
         qid: String,
-        answer: String,
+        answer: { type: mongoose.Schema.Types.Mixed },
       },
     ],
   },
